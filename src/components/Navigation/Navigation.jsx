@@ -8,20 +8,6 @@ const buildLinkClass = ({ isActive }) => {
   return clsx(s.link, isActive && s.active);
 };
 
-// const Navigation = () => {
-//   // const isLoggedIn = useSelector(selectIsLoggedIn);
-//   return (
-//     <nav className={s.nav}>
-//       <NavLink to="/" className={buildLinkClass}>
-//         Home
-//       </NavLink>
-//       <NavLink to="/contacts" className={buildLinkClass}>
-//         Contacts
-//       </NavLink>
-//     </nav>
-//   );
-// };
-
 const Navigation = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   return (

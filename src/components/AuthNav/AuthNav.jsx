@@ -8,7 +8,7 @@ const buildLinkClass = ({ isActive }) => {
 
 const AuthNav = () => {
   return (
-    <div>
+    <div className={s.navLinks}>
       <NavLink to="/register" className={buildLinkClass}>
         Register
       </NavLink>

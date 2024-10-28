@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { fetchContacts } from "../../redux/contacts/operations";
 import Loader from "../../components/Loader/Loader";
 import { selectIsLoggedIn } from "../../redux/auth/selectors";
+import s from "./ContactsPage.module.css";
 
 const ContactsPage = () => {
   const dispatch = useDispatch();
@@ -23,8 +24,8 @@ const ContactsPage = () => {
   }
 
   return (
-    <div className="container">
-      <h1>Phonebook</h1>
+    <div className={s.container}>
+      <h1 className={s.title}>Phonebook</h1>
       <ContactForm />
       <SearchBox />
       {loading && <Loader />}

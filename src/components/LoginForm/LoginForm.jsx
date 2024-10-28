@@ -1,4 +1,3 @@
-// LoginForm.js
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import s from "./LoginForm.module.css";
@@ -11,8 +10,8 @@ const LoginForm = () => {
   const initialValues = { email: "", password: "" };
 
   const validationSchema = Yup.object().shape({
-    email: Yup.string().email("Невірний формат email").required("Required"),
-    password: Yup.string().min(6, "Мінімум 6 символів").required("Required"),
+    email: Yup.string().email("Invalid email format").required("Required"),
+    password: Yup.string().min(6, "Minimum 6 characters").required("Required"),
   });
 
   const handleSubmit = (values, options) => {

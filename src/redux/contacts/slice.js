@@ -29,7 +29,7 @@ const contactsSlice = createSlice({
         state.error = null;
       })
       .addCase(logout.fulfilled, () => {
-        initialState;
+        return initialState;
       })
       .addMatcher(
         isAnyOf(

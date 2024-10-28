@@ -1,4 +1,3 @@
-// RegistrationForm.js
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import s from "./RegistrationForm.module.css";
@@ -11,9 +10,9 @@ const RegistrationForm = () => {
   const initialValues = { name: "", email: "", password: "" };
 
   const validationSchema = Yup.object().shape({
-    name: Yup.string().min(3, "Мінімум 3 символи").required("Required"),
-    email: Yup.string().email("Невірний формат email").required("Required"),
-    password: Yup.string().min(6, "Мінімум 6 символів").required("Required"),
+    name: Yup.string().min(3, "Minimum 3 characters").required("Required"),
+    email: Yup.string().email("Invalid email format").required("Required"),
+    password: Yup.string().min(6, "Minimum 6 characters").required("Required"),
   });
 
   const handleSubmit = (values, options) => {

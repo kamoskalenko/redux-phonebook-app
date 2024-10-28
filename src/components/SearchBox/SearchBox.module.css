@@ -1,0 +1,32 @@
+.searchBox {
+  max-width: 350px;
+  margin: 0 auto 20px auto;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.searchBox p {
+  margin-bottom: 5px;
+  font-size: 16px;
+  color: #343a40;
+}
+
+.searchBox input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+}
+
+.searchBox input:focus {
+  outline: none;
+  border-color: #80bdff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+@media (max-width: 600px) {
+  .searchBox {
+    max-width: 90%; /* Use 90% of the viewport width on small screens */
+  }
+}
