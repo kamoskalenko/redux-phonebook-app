@@ -4,10 +4,10 @@ import * as Yup from "yup";
 import s from "./LoginForm.module.css";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/auth/operations";
-import { toast } from "react-toastify";
 
 const LoginForm = () => {
   const dispatch = useDispatch();
+
   const initialValues = { email: "", password: "" };
 
   const validationSchema = Yup.object().shape({
@@ -16,14 +16,7 @@ const LoginForm = () => {
   });
 
   const handleSubmit = (values, options) => {
-    dispatch(login(values))
-      .unwrap()
-      .then((res) => {
-        toast(`Welcome, ${res.user.name}!`);
-      })
-      .catch(() => {
-        toast.error("invalid credentials");
-      });
+    dispatch(login(values));
     options.resetForm();
   };
 

@@ -15,51 +15,50 @@ const clearAuthHeader = () => {
 
 export const register = createAsyncThunk(
   "auth/register",
-  async (credentials, thunkApi) => {
+  async (credentials, thunkAPI) => {
     try {
       const { data } = await goitApi.post("/users/signup", credentials);
       setAuthHeader(data.token);
       return data;
     } catch (error) {
-      return thunkApi.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
 export const login = createAsyncThunk(
   "auth/login",
-  async (credentials, thunkApi) => {
+  async (credentials, thunkAPI) => {
     try {
       const { data } = await goitApi.post("/users/login", credentials);
       setAuthHeader(data.token);
       return data;
     } catch (error) {
-      return thunkApi.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
-export const logout = createAsyncThunk("auth/logout", async (_, thunkApi) => {
+export const logout = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
   try {
     await goitApi.post("/users/logout");
     clearAuthHeader();
   } catch (error) {
-    return thunkApi.rejectWithValue(error.message);
+    return thunkAPI.rejectWithValue(error.message);
   }
 });
 
 export const refreshUser = createAsyncThunk(
   "auth/refreshUser",
   async (_, thunkAPI) => {
-    const state = thunkAPI.getState();
-    const persistedToken = state.auth.token;
+    const savedToken = thunkAPI.getState().auth.token;
 
-    if (!persistedToken) {
+    if (!savedToken) {
       return thunkAPI.rejectWithValue("Unable to fetch user");
     }
 
     try {
-      setAuthHeader(persistedToken);
+      setAuthHeader(savedToken);
       const { data } = await goitApi.get("/users/current");
       return data;
     } catch (error) {
